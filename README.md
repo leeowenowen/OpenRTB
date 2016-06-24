@@ -1,5 +1,29 @@
 # OpenRTB_API_Specification中文版(V2.3.1)
 
+#名词解释
+**IAB:** Interactive Advertising Bureau 交互式广告局。
+
+# 前言
+## 简介
+
+RTP工程， 前身为OpenRTB组织， 在2010年11月份组建。致力于为数字媒体自动化交易开发一套全新的开放标准，以应对更大范围的平台，设备以及广告解决方案。本文档就是RTB工程努力的结晶，你可以在[www.iab.net](www.iab.net)找到最新的官方文档。
+
+## 关于IAB的广告网络和交易协会
+
+IAB 广告网络和交易协会主要由广告网络和广告交易平台成员公司的高层领导组成。该协会致力于促进当今世界日益复杂的广告市场中数字生态系统的利益。协会目标是促进完成在广告商，发布者，中间商，代理协会之间专业性和责任心的最高标准， 开发能够保证收入增长的程序以及创建保护消费者和行业的最佳实践。
+
+RTB工程是IAB广告科技理事会下的一个工作小组。
+
+## IAB 联系方式
+Melissa Gallo
+产品总监 – 数据和程序自动化, IAB 科学实验室
+[melissa@iab.net](melissa@iab.net)
+
+## 许可证
+
+OpenRTB 规范是在[Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/)许可之下，基于[http://openrtb.info](http://openrtb.info)的工作。 在该许可证之外的权限你可以在[http://openrtb.info](http://openrtb.info)找到。如果要查看该许可证的副本， 可以访问[https://creativecommons.org/licenses/by/3.0/](https://creativecommons.org/licenses/by/3.0/)或者写信给Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
+
+
 # 1. 介绍
 ## 1.1 Mission / Overview
 ## 1.2 History of OpenRTB
