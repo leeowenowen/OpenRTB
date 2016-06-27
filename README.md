@@ -62,16 +62,16 @@ OpenRTB于2010年的11月份在三个需求方平台（DataXu, MediaMath和Turn�
 
 ## 1.3 版本历史
 **OpenRTB 实时竞价API**
-2.3 支持原生广告以及多个微小改动
-2.2 为私有市场直接交易，视频，移动广告以及regulatory signals做出的一些新的改动
-2.1 按照QAG规范进行一些修正，一些小的改动以及错误修正。
-2.0 将展示广告，移动广告以及视频广告标准归一到一个统一的标准
-1.0 OpenRTB 移动版的最初发布版
+*　2.3 支持原生广告以及多个微小改动
+*　2.2 为私有市场直接交易，视频，移动广告以及regulatory signals做出的一些新的改动
+*　2.1 按照QAG规范进行一些修正，一些小的改动以及错误修正。
+*　2.0 将展示广告，移动广告以及视频广告标准归一到一个统一的标准
+*　1.0 OpenRTB 移动版的最初发布版
 
 **OpenRTB 展示 Block List分支**
-1.2 发布商API
-1.1 为包含creative attributes的实时交易进行小改动
-1.0 OpenRTB block list规范的最初发布。
+*　1.2 发布商API
+*　1.1 为包含creative attributes的实时交易进行小改动
+*　1.0 OpenRTB block list规范的最初发布。
 
 ## 1.4 资源
 OpenRTB Google Groups: [http://openrtb.info](http://openrtb.info)
