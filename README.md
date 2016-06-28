@@ -43,11 +43,15 @@ OpenRTB 规范是在[Creative Commons Attribution 3.0 License](https://creativec
 > 注意： 由于**recommended**属性不是必须的， 所以并不是从每个数据源都可以获取到的。 所以建议所有的OpenRTB事务参与者完成下页中的集成清单来标识供应方在竞价请求中支持，哪些属性是需求方需要用来做广告决策的。
 
 # 集成清单列表
+
+![](https://raw.githubusercontent.com/leeowenowen/OpenRTB_API_Specification-/master/res/integration_checklist.png)
 # 1. 介绍
 ## 1.1 目标/概览
 OpenRtb工程的任务是为广告买家和广告位库存买家之间的通信提供开放的工业标准，以刺激实时竞价市场的增长。标准涉及到很多方面，包括但不限于实时竞价协议，信息分类，离线配置同步以及其他很多。
 
 本文档为从早期”block list"项目和"OpenRTB Mobile"项目发展而来的实时竞价接口规范标准。这些标准旨在简化广告媒体库存的提供商（例如，广告交易， 代表发布商利益的广告网络， 卖方平台） 与其有竞争力的买家（例如，竞价者， 需求方平台以及代表广告商利益的广告网络）之间的关系。
+
+![](https://raw.githubusercontent.com/leeowenowen/OpenRTB_API_Specification-/master/res/openrtb_ecosystem.png)
 
 OpenRTB总的目标是为买家和卖家之间的沟通创造一种通用语言，这种倾向不是精确的规定每个交易的操作。 作为一个工程， 我们的目标是让参与的各方可以更容易的集成， 从而促进生态系统中交易的各方都能够进行更深层次的创新。
 
@@ -88,22 +92,78 @@ OpenRTB于2010年的11月份在三个需求方平台（DataXu, MediaMath和Turn�
 | RTB |实时竞价 Real-Time Bidding|
 | Exchange | 为一次展现管理不同竞价者之间的竞拍行为的服务 |
 | Bidder | 在实时竞拍中为获取一次展示参与竞价的实体 |
-| Seat |  |
-| Publisher ||
-| Site ||
-| Deal ID | |
+| Seat | 期望获取展示并使用竞拍者代表他们进行竞拍的实体 |
+| Publisher | 操作一个或者多个网站的实体 |
+| Site | 如果没有特殊说明，指的是一个支持广告内容的网页或者应用 |
+| Deal ID | 标识在特定场景下Publisher与Seat之间预先安排用于购买展示的协议 |
 
 # 2. OpenRTB 基础知识
-## 2.1 Transport
-## 2.2 Security
-## 2.3 Data Format
-## 2.4 OpenRTB Version HTTP Header
-## 2.5 Privacy by Design
-## 2.6 Relationship to IAB Quality Assurance Guidelines
-## 2.7 Customization and Extensions
 
-# 3. Bid Request 规范
-## 3.1 Object Model
+下图展示了广告交易平台和它的竞拍者之间的交互行为。
+广告请求首先从发布者的站点发起。
+对于每一个请求，广告交易平台都会向多个竞拍者广播竞价请求，从竞拍者返回的竞拍响应信息会按照常用的竞拍规则进行决策，获胜者会被通知， 广告审定结果被返回。获胜通知地址以及广告审定结果可能包含任何标准宏以保证广告交易平台能够与竞拍者之间沟通竞拍相关的关键数据。
+![](https://raw.githubusercontent.com/leeowenowen/OpenRTB_API_Specification-/master/res/rtb_sequence.png)
+注意对于通知是否会丢失并没有显式规定。 这是由于该操作会消耗一定的系统性能和带宽。建议广告交易平台在请求/响应协议之外通过离线或者独立的处理流程来提供丢失的竞拍数据信息。
+
+本规范专注于实时竞价交互中的竞价请求和响应以及胜出通知及其响应。其他的交互（比如阻塞列表同步， 流量控制）要么是未来执行的可选行为，要么是已经被OpenRTB定义的。
+
+## 2.1 数据传输
+
+交易平台和它的竞拍者之间的基础通讯协议是HTTP. 特别要说明的是，在发起竞价请求的时候需要使用HTTP POST方式，因为它比HTTP GET可以附带更多的内容，并且也更容易支持二进制数据。 胜出通知则可以使用HTTP POST 或者 GET, 这个是由交易平台决定的。除了空的竞价响应应当返回HTTP 204之外， 所有的调用都应当返回HTTP 200（例如，推荐的方式是在响应体中指明"no bid"), 
+
+> **最佳实践:** 一种最简单和最有效的提高连接性能的方式是启用HTTP长连接， 也就是我们通常说的Keep-Alive. 通过减少两端的连接管理以及CPU使用， 对整个过程会有明显的性能提升。
+
+## 2.2 安全性
+
+SSL(Secure Socket Layer) 不是必须的， 因为这些调用都是服务器之间的调用， 可以用其他方式对数据的安全进行保护。除此之外， SSL 不被推荐使用也由于它额外的处理负载。
+
+## 2.3 数据格式
+
+JSON(Javascript Object Notation) 是竞价请求和响应的推荐数据格式。 JSON被选择是因为它的可读性以及紧凑性。数据负载的相关信息我们会在第3节和第4节详细描述。
+
+交易平台可能需要提供额外的内容信息给有需要的竞价者。这些内容可能包括一个JSON, XML, Apache Avro, ProtoBuf, Thrift以及其他种类的格式的压缩形式。
+
+竞价请求需要使用HTTP的Content-Type头在mime-type中指明内容的类型。标准JSON类型的mime-type是"application/json". 竞价响应的数据格式必须跟竞价请求相同。
+···
+ Content-Type: application/json
+···
+
+如果要使用其他可选的二进制类型， 交易平台或者SSP应当适当的指明Content-Type, 例如"Content-Type: avro/binary" 或者 "Content-Type:application/x-protobuf", 如果没有content-type头， 竞拍者应当认为类型是"application/json", 除非交易平台选择了另一种不同的默认类型。
+
+作为约定，某个属性的确实有其确定的意义，大多数情况下，这标识该属性值是未知的，除非被特殊指明。
+
+## 2.4 OpenRTB 版本号 HTTP 头
+
+OpenRTB版本号应当在竞价请求的头中使用自定义头传递。这可以让竞价者在解析请求体之前判断消息的版本号。
+此外，建议竞价者在响应头中使用相同的格式信息标识自己实现的协议版本，这个版本号可能与请求头中的版本号是不同的。
+
+```
+ x-openrtb-version: 2.3
+```
+版本号应当以 <主版本号>.<次版本号>的格式（例如， 2.3). 第一位或者第二位数字的变动标识着协议的改变。通常，第二位版本的改变应当向兼容，第一位版本的改动不需要向后兼容。任何第三位版本号的改动（例如2.0.1)都不应当改变协议自身， 而仅仅改变不影响协议内容的描述和注释。第三位的版本号不应当在HTTP头中包含，因为他们对整个实现不会有技术上的影响。
+
+## 2.5 隐私设计
+
+OpenRTB工程支持广告中卖方和买方之间的隐私策略。特别是OpenRTB支持 do-not-track(3.2.11节）， COPPA restriction signaling(7.1节）， 以及从卖方向买房通过User　Object传递用户数据（3.2.13节）的能力。
+
+## 2.6 与 IAB 质量保证指南 之间的关系
+
+OpenRTB与IAP的质量保证指南（QAG)完全兼容， 你可以在这里找到[http://www.iab.net/ne_guidelines](http://www.iab.net/ne_guidelines). 特别是本文档中的分类标准是从QAG继承而来。
+
+## 2.7 定制与扩展
+
+OpenRTB规范允许交易病态对其进行定制和扩展。每一个对象都可以包含扩展。为了保证扩展字段的一致性，扩展字段应当始终使用"ext"命名。
+
+# 3. 竞价请求规范
+
+RTB 事务在交易平台或者其他广告提供源向竞价者发起竞价请求是被发起。竞价请求由顶级请求对象组成，至少一个展示对象， 以及可能有选择性的包含一些其他的对象用于提供展示相关的上下文信息。
+
+## 3.1 对象模型。
+
+下图展示了竞价请求的对象模型。顶级对象（例如， 在JSON中没有命名的最外层对象）在这个模型张是表示`BidRequest`的。在它的直属子对象中，只有`Imp`是技术上必须的，因为它是描述一次展示的基础信息，必须使用`Banner`, `Video`以及`Native`中的至少一个来定义展示的类型（例如， 无论一个或者多个展示者想要接收；尽管一次竞价是这些指明类型中的明确的一种）。一次展示可能随意的一组私有市场的影响。
+
+![](https://raw.githubusercontent.com/leeowenowen/OpenRTB_API_Specification-/master/res/bid_request_object_model.png)
+
 ##　3.2 Object Specifications
 ### 3.2.1 BidRequest
 ### 3.2.2 Imp
