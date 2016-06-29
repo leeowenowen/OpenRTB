@@ -240,8 +240,7 @@ RTB 事务在交易平台或者其他广告提供源向竞价者发起竞价请�
 | banner | object | `Banner`对象， 如果展示需要以banner的形式提供则需要填充 |
 | video | object | `Video`对象， 如果展示需要以视频的形式提供则需要填充 |
 | native | object | `Native`对象， 如果展示需要以Native广告的形式提供则需要填充 |
-| displaymanager | string | 广告媒体合作伙伴的名字， 用于渲染广告的SDK技术或者播放器（通常是视频或者移动广告）。
-某些广告服务需要根据合作伙伴定制广告代码， 推荐在视频广告或应用广告中填充 |
+| displaymanager | string | 广告媒体合作伙伴的名字， 用于渲染广告的SDK技术或者播放器（通常是视频或者移动广告）某些广告服务需要根据合作伙伴定制广告代码， 推荐在视频广告或应用广告中填充 |
 | displaymanagerver | string | 广告媒体合作伙伴， 用于渲染广告的SDK技术或者播放器（通常是视频或者移动广告）的版本号。 某些广告服务需要根据合作伙伴定制广告代码， 推荐在视频广告或应用广告中填充 |
 | instl | integer; default 0 | 1标识广告是插屏或者全屏广告， 0表示不是插屏广告 |
 | tagid | string | 某个特定广告位或者广告标签的标识，用于发起竞拍。 为了方便调试问题或者进行买方优化 |
@@ -257,14 +256,115 @@ RTB 事务在交易平台或者其他广告提供源向竞价者发起竞价请�
 Banner是最常见的展示类型。 虽然“banner”这个名词在其他的场景有很特别的意思， 在这里它可以是包括静态图像， 可扩展的广告单元或者一个在banner中播放的视频在内的很多东西。一组Banner对象可以出现在Video对象中来描述可选择在VAST贵方中定义的附加广告。
 
 在Imp对象中出现Banner表示广告展示类型是一个banner. 同样的展示也可以是一个视频或者Native广告， 只要包含Video对象或者Native对象。然而， 任何为展示给定的竞价请求必须符合提供类型中的一个。
+
 | 属性 | 类型 | 描述 |
 | --- | --- | --- |
-| w | integer; **recommended** | 展示的宽度，以像素为单位
+| w | integer; **recommended** | 展示的宽度，以像素为单位，如果没有指定`wmin`以及`wmax`, 这个值指的就是需要的展示宽度，否则指的是一个期望宽度 |
+| h | integer; **recommended** | 展示的高度，以像素为党委，如果没有指定`hmin`以及`hmax`, 这个值指的就是需要的展示高度， 否则指的是一个期望高度 |
+| wmax | integer | 展示宽度的最大值，以像素为单位， 如果和`w`一起出现， 则`w`应该被解释为推荐宽度或者期望宽度 |
+| wmin | integer | 展示宽度的最小值，以像素为单位， 如果和`w`一起出现， 则`w`应该被解释为推荐宽度或者期望宽度 |
+| hmax | integer | 展示高度的最大值，以像素为单位， 如果和`h`一起出现， 则`h`应该被解释为推荐宽度或者期望宽度 |
+| hmin | integer | 展示高度的最小值，以像素为单位， 如果和`h`一起出现， 则`h`应该被解释为推荐宽度或者期望宽度 |
+| id | string | banner对象的唯一标识。在一个Ad中包含Banner与Video的时候使用。值往往从1开始并依次递增，在依次展示中应当是唯一的 |
+| btype | integer array | 限制的banner类型。参考表5.2 |
+| battr | integer array | 限制的物料属性， 参考表5.3 |
+| pos | integer | 广告在屏幕上的位置，参考表5.4 |
+| mimes | string array | 支持的内容mime-type. 常用的mime-type包括application/x-shockwave-flash, image/jpg以及 image/gif. |
+| topframe | integer | banner是在顶层frame中而不是iframe中， 0表示不是， 1表示是 |
+| expdir | integer array | banner可以扩展的方向，参考表5.5 |
+| api | integer array | 本次展示支持的API框架列表， 参考表5.6. 如果一个API没有被显式在列表中指明，则表示不支持|
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
 
 ### 3.2.4 Video
+
+这个对象表示一个流式视频展示。 许多属性对于最小可用功能不是必须的，但是为了在需要的时候提供更好的控制能力会被使用。OpenRTB中的视频通常都是与标准一致的，复合广告的概念也是支持的， 可以包含用于定义复合广告的一组Banner对象。
+
+Video作为Imp的子对象出现表示它是一个具有视频类型的展示对象。 同样的展示也可以是一个Banner或者Native广告， 只要包含Banner对象或者Native对象。然而， 任何为展示给定的竞价请求必须符合提供类型中的一个。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| mimes | string array; **required** | 支持的内容mime-type， 常用的类型包括用于windows媒体的video/x-ms-wmv以及用于Flash视频的video/x-flv. |
+| minduration | integer; **recommended** | 最小的视频长度， 以秒为单位 |
+| maxduration | integer; **recommended** | 最大的视频长度， 以秒为单位 |
+| protocol | integer; **DEPRECATED** | 注意，使用`protocols`是高度推荐的。 支持的视频竞价响应协议。参考表5.8.至少一个支持的协议必须在protocol或者protocols属性中被指定 |
+| protocols | integer array; **recommended** | 支持的视频竞价响应协议数组。参考表5.8.至少一个支持的协议必须在protocol或者protocols属性中被指定 |
+| w | integer; **recommeded** | 视频播放器的宽度，像素为单位 |
+| h | integer; **recommeded** | 视频播放器的高度，像素为单位 |
+| startdelay | integer; **recommended** | 视频前，中及之后的广告位中视频广告的启动延时，以秒为单位, 参考表5.10|
+| linearity | integer | 展示是否必须是线性的， 如果没有指定，则标识都是被允许的，参考表5.11 |
+| sequence | integer | 如果在同一个竞价请求中提供了多个展示， 则需要考虑多个物料传输的顺序 |
+| battr | integer array | 限制的物料属性，参考表5.3 |
+| maxextended | integer | 最大的视频广告延长时间长度（如果支持延长）。如果为空或者0，表示不允许延长， 如果为-1，表示允许延时，且没有时间限制， 如果为大于0的数字， 则表示可以延长的时间长度比maxduration大的值 |
+| minbitrate | integer | 最小的比特率，以Kbps为单位。交易平台可以动态的设置这个值或者为所有发布者统一设置该值 |
+| maxbitrate | integer | 最大的比特率，以Kbps为单位。交易平台可以动态的设置这个值或者为所有发布者统一设置该值 |
+| boxingallowed | integer; default 1 | 是否允许将4：3的内容展示在16：9的窗口， 0表示不允许，1表示允许 |
+| playbackmethod | integer array | 允许的播放方式， 如果没有指定，表示支持全部，参考表5.9 |
+| delivery | integer array | 支持的传输方式 （例如流式传输，逐步传输），如果没有指定，表示全部支持，参考表5.13|
+| pos | integer | 广告在屏幕上的位置，参考表5.4 |
+| companionad | object array | 如果支持复合广告，表示一组Banner对象 |
+| api | integer array | 本次展示支持的API框架列表， 参考表5.6. 如果一个API没有被显式在列表中指明，则表示不支持|
+| companiontype | integer array | 支持的VAST companion 广告类型， 参考表5.12。 如果在companionad中填充了Banner对象则推荐使用 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.5 Native
+
+表示一个Native类型的展示。Native广告单元需要无缝的插入其周围的内容中（例如， 一个对Twitter或Facebook赞助）。 因此，响应必须具有良好的结构， 让展示者能够在细粒度上控制渲染过程。
+
+Native小组委员会为OpenRTB开发了一个组合规范，名为Native Ad规范。 定义了Native广告的请求参数以及响应结构。这个对象以字符串的形式提供请求参数， 这样的话具体的请求参数就可以按照Native Ad规范独立演进。同样的， 广告markup也会按照该文档指定的结构提供。
+
+Native作为Imp的子对象出现表示它是一个具有native类型的展示对象。 同样的展示也可以是一个Banner或者Video广告， 只要包含Banner对象或者Video对象。然而， 任何为展示给定的竞价请求必须符合提供类型中的一个。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| request | string; **required** | 遵守Native Ad规范的请求体 |
+| ver | string; **recommended** | Native Ad规范的版本， 为了高效解析强烈推荐 |
+| api | integer array | 本次展示支持的API框架列表， 参考表5.6. 如果一个API没有被显式在列表中指明，则表示不支持|
+| battr | integer array | 限制的物料属性，参考表5.3 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.6 Site
+
+如果广告载体是一个网站时应该包含这个对象，如果是非浏览器应用时则不需要。 一个竞价请求一定不能同时包含Site对象和App对象。 提供一个站点标识或者页面地址是很有用的， 但是不是严格必须的。
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string; **recommended** | 交易特定的站点标识|
+| name | string | 站点名称 （可以在展示者请求中作为别名标识）|
+| domain | string | 站点的域名 （例如，"mysite.foo.com") |
+| cat | string array | 站点的一组IAB 内容类型，参考表5.1 |
+| sectioncat | string array | 描述站点当前部分的一组IAB内容类型，参考表5.1 |
+| pagecat | string array | 描述站点当前视图的一组IAB内容类型，参考表5.1 |
+| page | string | 展示广告将要被展示的页面地址 |
+| ref | string | 引导到当前页面的referrer地址 |
+| search | string | 引导到当前页面的搜索字符串 |
+| mobile | integer | 移动优化标志， 0表示否，1表示是 |
+| privacypolicy | integer | 表示该站点是否有隐私策略， 0表示没有， 1表示有 |
+| publisher | Object |`Publisher`对象， 站点发布者的详细信息 |
+| content | Object | `Content`对象， 该站点内容的详细信息 |
+| keywords | string | 逗号分隔的站点的关键字信息 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.7 App
+
+如果广告载体是非浏览器应用（通常是移动设备）时应该包含该对象， 网站则不需要包含。一个竞价请求一定不能同时包含Site对象和App对象。 提供一个App标识或者`bundle`是很有用的， 但是不是严格必须的。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string; **recommended** | 交易特定的应用标识|
+| name | string | 应用名称 （可以在展示者请求中作为别名标识）|
+| bundle | string | 应用信息或者包名（例如， com.foo.mygame); 需要是在整个交易过程中唯一的标识 |
+| domain | string | 应用的域名（例如， "mygame.foo.com" ) |
+| storeurl | string | 应用的商店地址， 遵循AQG 1.5 |
+| cat | string array | 应用的IAB内容类型数组， 参考表5.1 |
+| sectioncat | string array | 应用当前部分的IAB内容类型数组，参考表5.1 |
+| pagecat | string array | 应用当前视图的IAB内容类型数组，参考表5.1 |
+| ver | string | 应用版本号 |
+| privacypolicy | integer | 表示该应用是否有隐私策略， 0表示没有， 1表示有 |
+| paid | integer | 应用是否需要付费， 0表示免费， 1表示付费 |
+| publisher | Object |`Publisher`对象， 应用发布者的详细信息 |
+| content | Object | `Content`对象， 该应用内容的详细信息 |
+| keywords | string | 逗号分隔的应用的关键字信息 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.8 Publisher
 ### 3.2.9 Content
 ### 3.2.10 Producer
