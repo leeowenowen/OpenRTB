@@ -255,7 +255,7 @@ RTB 事务在交易平台或者其他广告提供源向竞价者发起竞价请�
 
 Banner是最常见的展示类型。 虽然“banner”这个名词在其他的场景有很特别的意思， 在这里它可以是包括静态图像， 可扩展的广告单元或者一个在banner中播放的视频在内的很多东西。一组Banner对象可以出现在Video对象中来描述可选择在VAST贵方中定义的附加广告。
 
-在Imp对象中出现Banner表示广告展示类型是一个banner. 同样的展示也可以是一个视频或者Native广告， 只要包含Video对象或者Native对象。然而， 任何为展示给定的竞价请求必须符合提供类型中的一个。
+Banner作为Imp的子对象出现表示它是一个具有banner类型的展示对象. 同样的展示也可以是一个视频或者Native广告， 只要包含Video对象或者Native对象。然而， 任何为展示给定的竞价请求必须符合提供类型中的一个。
 
 | 属性 | 类型 | 描述 |
 | --- | --- | --- |
@@ -366,16 +366,183 @@ Native作为Imp的子对象出现表示它是一个具有native类型的展示�
 | ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
 
 ### 3.2.8 Publisher
+
+用于描述展示广告的媒体的发布者。通常发布者就是OpenRTB事务中的卖方。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string; **recommended** | 交易特定的发布者标识|
+| name | string | 发布者名称 （可以在展示者请求中作为别名标识）|
+| cat | string array | 发布者的IAB内容类型数组， 参考表5.1 |
+| domain | string | 发布者的顶级域名（例如， "publisher.com" ) |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.9 Content
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string | 内容唯一标识 |
+| episode | integer | 情节数目（通常用于视频内容） |
+| title | string | 内容标题。 视频示例： “Search Committee"(电视）， ”A New Hope"(电影), "Endgame"(为网络制作） 非视频示例： “Why an Antarctic Glacier is Melting So Quickly"(时报杂志文章）|
+| series | string | 内容系列。 视频示例：“The Office"(电视）， ”Start Wars"(电影,"Arby 'N' The Chief"(为网络制作） 非视频示例： “Ecocentric"(时报杂志博客）|
+| season | string | 内容季数， 通常用于视频内容（例如，“第三季”）|
+| producer | object | 内容提供者的详细信息 |
+| url | string | 内容的url, 用于买方了解使用的上下文或者审查 |
+| cat | string array | 内容生产者的IAB内容类型数组， 参考表5.1 |
+| videoquality | integer | 视频质量，按照IAB的分类，参考表5.11 |
+| context | integer | 内容类型（游戏，视频，文本等）， 参考表5.14 |
+| contentrating | string | 内容分级（例如， MPAA美国电影分级制度) |
+| userrating | string | 内容的用户评分（比如，星数，点赞数等） |
+| qagmediarating | integer | 媒体评分，按照QAG规范。参考表5.15 |
+| keywords | string | 逗号分隔的内容的关键字信息 |
+| livestream | integer | 0表示不是实时，1表示实时 |
+| sourcerelationship | integer | 0表示间接源， 1表示直接源 |
+| len | integer | 内容长度， 用于音频或者视频 |
+| language | string | 内容语言， 使用ISO-639-1-alpha-2 | 
+| embeddable | integer | 表示内容是否可嵌套（例如一个可嵌套的视频播放器）， 0表示不可以， 1表示可以 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.10 Producer
+
+定义内容的提供者， 广告会在这些内容中展示。 当内容会被多个发布者展示时是对于区分发布者和生产者是否是同一实体是有用的。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string| 内容生产者标识， 当内容会被多个发布者展示且可能使用嵌套标签展示在一个站点的时候有用 |
+| name | string | 内容提供者名称 （例如， “Warner Bros"）|
+| cat | string array | 内容提供者的IAB内容类型数组， 参考表5.1 |
+| domain | string | 内容提供者的顶级域名（例如， "producer.com" ) |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.11 Device
+
+提供用户使用的设备的详细信息。设备信息包括硬件，平台以及附加信息。设备可以是一部移动手机， 桌面电脑，机顶盒或者其他数码设备。 
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| ua | string; **recommended** | 浏览器User-Agent字符串 |
+| geo | object; **recommended** | `Geo`对象，用用户当前位置表示设备位置 |
+| dnt | integer; **recommended** | 浏览器在HTTP头中设置的标准的 “Do Not Track"标识， 0表示不限制追踪， 1表示限制（不允许）追踪 |
+| ip | string; **recommended** | 最接近设备的IPv4地址 |
+| ipv6 | string | 最接近设备的IPV6地址 | 
+| devicetype | integer | 设备类型，参考被5.17 |
+| make | string |　设备制造商，例如 "Apple" |
+| model | string | 设备型号，例如 "iphone" |
+| os | string | 设备操作系统， 例如 “ios" |
+| osv | string | 设备操作系统版本号， 例如 “3.1.2” |
+| hwv | string | 设备硬件版本， 例如 “5S” |
+| h | integer | 屏幕的物理高度， 以像素为单位 |
+| w | integer | 屏幕的物理宽度，以像素为单位 |
+| ppi | integer | 以像素每英寸表示的屏幕尺寸|
+| pxratio | float | 设备物理像素与设备无关像素的比率 |
+| js | integer | 支持javascript, 0表示不支持， 1表示支持 |
+| flashver | string | 浏览器支持的Flash版本 |
+| language | string | 浏览器语言，使用ISO-639-1-alpha-2 |
+| carrier | string | ISP的附带信息（如版本号）。“WIFI"通常在移动设备中表示高带宽。（例如,video freendly vs. cellular). |
+| connectiontype | integer | 网络连接类型， 参考表5.18 |
+| ifa | string | 广告主标识， 明文表示 |
+| didsha1 | string | 硬件设备ID(例如 IMEI),使用SHA1哈希算法 |
+| didmd5 | string | 硬件设备ID(例如 IMEI),使用md5哈希算法 |
+| dpidsha1 | string | 设备平台ID(例如 Android ID),使用SHA1哈希算法 |
+| dpidmd5 | string | 设备平台ID(例如 Android ID),使用md5哈希算法 |
+| macidsha1 | string | 设备mac地址,使用SHA1哈希算法 |
+| macidmd5 | string | 设备mac地址,使用md5哈希算法 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
+>**最佳实践:** 当前没有关于设备生产商，型号，操作系统或其他附加信息的有效的开源列表。 交易平台通常使用商业产品或者其他专有列表来填充这些属性。 在适当的开放标准可用之前， 推荐交易平台向竞拍者发布他们支持的设备生产商， 型号，操作系统以及附加信息。
+
+>**最佳实践:** 对于移动设备的IP合理的检测方式不是去直接检测的，通常存在于HTTP 的x-forwarded-for头中， 跳过私有的网络（例如10.x.x.x或者192.x.x.x), 扫描出已知的IP. 当交易平台向竞拍者传递设备的IP地址的时候， 要求交易平台仔细的研究并实现该属性。
+
 ### 3.2.12 Geo
+
+用于封装一个地理位置信息的多种不同属性。 当作为`Device`对象的子节点的时候，标识设备的地理位置或者用户当前的地理位置。 当作为`User`的子节点的时候，标识用户家的位置（也就是说，不必是用户的当前位置）。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| lat | float | 纬度信息，取值范围-90.0到+90.0， 负值表示南方 |
+| lon | float | 经度信息， 取值返回-180.0到+180.0， 负值表示西方 |
+| type | integer | 位置信息的源， 当传递lat/lon的时候推荐填充， 参考表5.16 |
+| country | string | 国家码， 使用 ISO-3166-1-alpha-3|
+| region | string | 区域码， 使用ISO-3166-2; 如果美国则使用2字母区域码 |
+| regionfips104 | string | 国家的区域，使用 FIPS 10-4 表示。 虽然OpenRTB支持这个属性，它已经与2008年被NIST撤销了 |
+| metro | string | 谷歌metro code; 与Nielsen DMA相似但不完全相同， 参见附录A |
+| city | string | 城市名，使用联合国贸易与运输位置码， 参见附录A |
+| zip | string | 邮政编码或者邮递区号 |
+| utcoffset | integer | 使用UTC加或者减分钟数的方式表示的本地时间 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.13 User
+
+描述了解或者持有设备的用户的信息（也就是广告的受众）。 用户`id`是一个exchange artifact, 可能随着屏幕旋转或者其他的隐私策略改变。 尽管如此，用户id必须在足够长的一段时间内保持不变，以为目标用户定向和用户访问频率限制提供合理的服务。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string; **recommended** | 交易特定的用户标识， 推荐`id`和`buyeruid`中至少提供一个。 |
+| buyeruid | string; **recommended** | 买方为用户指定的ID，由交易平台为买方映射。推荐`id`和`buyeruid`中至少提供一个。|
+| yob | integer | 生日年份，使用4位数字表示 |
+| gender | strnig | 性别， M表示男性， F表示女性， O标识其他类型，不填充表示未知|
+| keywords | string | 逗号分隔的关键字， 兴趣或者意向列表 |
+| customdata | string | 可选特性， 用于传递给竞拍者信息，在交易平台的cookie中设置。字符串必须使用base85编码的 cookie，可以是任意格式。 JSON加密的时候必须包括转义的引号。 |
+| geo | object | `Geo`对象， 用户家的位置信息。不必是用户的当前位置 |
+| data | object array | 附加的用户信息， 每个 `Data`对象表示一个不同的数据源 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
+
 ### 3.2.14 Data
+
+`Data`和`Segment`对象一起允许指定用户附加信息。数据可能来自多个数据源， 可能来自交易平台自身或者第三方提供的信息， 可以使用`id`属性区分。 一个竞价请求可以混合来自多个提供者的数据信息。 交易平台应该优先提供正在使用的数据提供者的信息。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string | 交易特定的数据提供者标识 |
+| name | string | 交易特定的数据提供者名称 |
+| segment | object array | 包含数据内容的一组`Segment`对象 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.15 Segment
+
+数据字段， 描述用户信息数据的键值对。 其父对象`Data`是某个给定数据提供者的数据字段的集合。交易平台必须优先将字段的名称和值传递给竞拍者。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string | 数据提供者的特定数据段的ID |
+| name | string | 数据提供者的特定数据段的名称 |
+| value | string | 表示数据字段值的字符串 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.16 Regs
+
+描述任何适用于该请求的法律，政府或者工业管控条例。 `coppa`(Children’s Online Privacy Protection Act)标志着是否该请求是否符合美国联邦贸易委员会颁布的美国儿童在线隐私保护法案，详情可参考7.1节。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| coppa | integer | 标志着该请求是否遵从COPPA法案， 0表示不遵从， 1表示遵从 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.17 Pmp
+
+包含本展示涉及的买卖双方的直接交易相关的私有市场信息。 真实的交易信息使用一组`Deal`对象表示， 详情可参考7.2节。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| private_auction | integer | 标识在`Deal`对象中指明的席位的竞拍合格标准， 0标识接受所有竞拍， 1标识竞拍受`deals`属性中描述的规则的限制  |
+| deals | object array | 一组`Deal`对象， 用于传输适用于本次展示的交易信息 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 ### 3.2.18 Deal
+
+描述限制买卖双方之间交易的一些条款。 它在`Pmp`集合中的出现表示该展示符合交易描述的条款。详情参考7.2节。
+
+| 属性 | 类型 | 描述 |
+| --- | --- | --- |
+| id | string; **required** | 直接交易的唯一ID | 
+| bidfloor | float; default 0 | 本次展示的最低竞价，以CPM为单位 |
+| bidfloorcur | string; default 'USD' | 使用ISO-4217码表指定的货币。 如果交易平台允许，这可能与竞价者返回的竞价货币类型不一致 |
+| at | integer | 可选的覆盖竞价请求中的竞拍类型， 1表示第一价格竞拍，2标识第二价格竞拍， 3表示使用bidfloor可以作为交易价格 | 
+| wseat | string array | 允许参与本次交易竞价的买方席位白名单。 席位ID需要交易平台和竞拍者提前协商， 忽略本属性标示没有席位限制 |
+| wadomain | string array | 允许参与本次交易竞价的广告主域名列表（例如， advertiser.com). 忽略本属性标示没有广告主限制。 |
+| ext | object | 特定交易的OpenRTB协议的扩展信息占位符 |
+
 
 # 4. Bid Response 规范
 ## 4.1 Object Model
