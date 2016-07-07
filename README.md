@@ -1,3 +1,8 @@
+OpenRTB规范中文翻译 
+
+---
+
+
 # OpenRTB_API_Specification中文版(V2.3.1)
 
 #名词解释
