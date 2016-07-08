@@ -1,9 +1,5 @@
-OpenRTB规范中文翻译 
 
----
-
-
-# OpenRTB_API_Specification中文版(V2.3.1)
+``# OpenRTB_API_Specification中文版(V2.3.1)
 
 #名词解释
 **IAB:** Interactive Advertising Bureau 交互式广告局。
@@ -697,178 +693,1313 @@ ${AUCTION_PRICE:B64}
 
 这个OpenRTB表中的值都是继承自IAB的质量保证指南（QAG). 实现者应当与IAB.net上的QAG中的值保持同步。
 
+| 值 | 描述 | 中文释义 |
+| --- | --- | --- |
+| IAB1 | Arts & Entertainment | 艺术与娱乐 |
+| IAB1-1 | Books & Literature | 书籍与文学 |
+| IAB1-2 | Celebrity Fan/Gossip | 名人粉丝/八卦 |
+| IAB1-3 | Fine Art | 美术 |
+| IAB1-4 | Humor | 幽默 |
+| IAB1-5 | Movies | 电影 |
+| IAB1-6 | Music | 音乐 |
+| IAB1-7 | Television | 电视 |
+| IAB2 | Automotive | 汽车 |
+| IAB2-1 | Auto Parts | 汽车配件 |
+| IAB2-2 | Auto Repair | 汽车维修 |
+| IAB2-3 | Buying/Selling Cars | 汽车买卖 |
+| IAB2-4 | Car Culture | 汽车文化 |
+| IAB2-5 | Certified Pre-Owned | 二手车买卖 |
+| IAB2-6 | Convertible | |
+| IAB2-7 | Coupe | 双门跑车 |
+| IAB2-8 | Crossover | 跨界车 |
+| IAB2-9 | Diesel | 柴油机 |
+| IAB2-10 | Electric Vehicle | 电动汽车 |
+| IAB2-11 | Hatchback | 有仓门式后背的汽车 |
+| IAB2-12 | Hybrid | 混合动力车 |
+| IAB2-13 | Luxury | 豪华车 |
+| IAB2-14 | Minivan | 小货车 |
+| IAB2-15 | Motorcycles | 摩托车 |
+| IAB2-16 | Off-Road Vehicles | 越野车 |
+| IAB2-17 | Performance Vehicles | 车辆性能 |
+| IAB2-18 | Pickup | 皮卡 |
+| IAB2-19 | Road-Side Assistance | 路边援助 |
+| IAB2-20 | Sedan | 轿车 |
+| IAB2-21 | Trucks & Accessories | 卡车及配件 |
+| IAB2-22 | Vintage Cars | 老爷车 |
+| IAB2-23 | Wagon | 马车 |
+| IAB3 | Business | 商业 |
+| IAB3-1 | Advertising | 广告 |
+| IAB3-2 | Agriculture | 农艺 |
+| IAB3-3 | Biotech/Biomedical | 生物技术/生物医学 |
+| IAB3-4 | Business Software | 商业软件 |
+| IAB3-5 | Construction | 建筑 |
+| IAB3-6 | Forestry | 林业 |
+| IAB3-7 | Government | 政府 |
+| IAB3-8 | Green Solutions | 绿色解决方案 |
+| IAB3-9 | Human Resources | 人力资源 |
+| IAB3-10 | Logistics | 物流 |
+| IAB3-11 | Marketing | 市场营销 |
+| IAB3-12 | Metals | 金属 |
+| IAB4 | Careers | 职业生涯 |
+| IAB4-1 | Career Planning | 职业规划 |
+| IAB4-2 | College | 大学 |
+| IAB4-3 | Financial Aid | 助学金|
+| IAB4-4 | Job Fairs | 招聘会 |
+| IAB4-5 | Job Search | 找工作 |
+| IAB4-6 | Resume Writing/Advice | 简历书写与建议 |
+| IAB4-7 | Nursing | 护理 |
+| IAB4-8 | Scholarships | 奖学金 |
+| IAB4-9 | Telecommuting | 远程办公 |
+| IAB4-10 | U.S. Military | 美国军方 |
+| IAB4-11 | Career Advice | 职业建议 |
+| IAB5 | Education | 教育 |
+| IAB5-1 | 7-12 | Education |  7-12岁教育 |
+| IAB5-2 | Adult Education | 成人教育 |
+| IAB5-3 | Art History | 艺术历史 |
+| IAB5-4 | College Administration | 大学管理 |
+| IAB5-5 | College Life | 大学生活 |
+| IAB5-6 | Distance Learning | 远程教育 |
+| IAB5-7 | English as a 2nd Language | 英语作为第二语言 |
+| IAB5-8 | Language Learning | 语言学习 |
+| IAB5-9 | Graduate School | 研究生院 |
+| IAB5-10 | Homeschooling | 在家教育 |
+| IAB5-11 | Homework/Study Tips | 作业/学习 |
+| IAB5-12 | K-6 or Educators | K-6年级教育工作者 |
+| IAB5-13 | Private School | 私立学校 |
+| IAB5-14 | Special Education | 特殊教育 |
+| IAB5-15 | Studying Business | 学习商业 |
+| IAB6 | Family & Parenting | 家庭和父母 |
+| IAB6-1 | Adoption | 收养 |
+| IAB6-2 | Babies & Toddlers | 婴幼儿 |
+| IAB6-3 | Daycare/Pre School | 托儿所 |
+| IAB6-4 | Family Internet | 家庭网络 |
+| IAB6-5 | Parenting - K-6 or Kids | K-6年级小孩的教育 |
+| IAB6-6 | Parenting teens | 青少年教育 |
+| IAB6-7 | Pregnancy | 怀孕 |
+| IAB6-8 | Special Needs Kids | 特殊需要的孩子 |
+| IAB6-9 | Eldercare | 老年人照顾 |
+| IAB7 | Health & Fitness | 健康与健身 |
+| IAB7-1 | Exercise | 锻炼 |
+| IAB7-2 | ADD | 注意力缺陷障碍 |
+| IAB7-3 | AIDS/HIV | 艾滋病 |
+| IAB7-4 | Allergies | 过敏症 |
+| IAB7-5 | Alternative Medicine | 替代医学 |
+| IAB7-6 | Arthritis | 关节炎 |
+| IAB7-7 | Asthma | 哮喘 |
+| IAB7-8 | Autism/PDD | 自闭症/发育迟缓者  |
+| IAB7-9 | Bipolar Disorder | 抑郁狂躁型忧郁症 |
+| IAB7-10 | Brain Tumor | 脑瘤 |
+| IAB7-11 | Cancer | 癌症 |
+| IAB7-12 | Cholesterol | 胆固醇 |
+| IAB7-13 | Chronic Fatigue Syndrome | 慢性疲劳综合症 |
+| IAB7-14 | Chronic Pain | 慢性疼痛 |
+| IAB7-15 | Cold & Flu | 感冒和流感 |
+| IAB7-16 | Deafness | 耳聋 |
+| IAB7-17 | Dental Care | 牙科保健 |
+| IAB7-18 | Depression | 抑郁症 |
+| IAB7-19 | Dermatology | 皮肤病学 |
+| IAB7-20 | Diabetes | 糖尿病 |
+| IAB7-21 | Epilepsy | 癫痫 |
+| IAB7-22 | GERD/Acid Reflux |  胃食管反流/胃酸倒流 |
+| IAB7-23 | Headaches/Migraines | |
+| IAB7-24 | Heart Disease | |
+| IAB7-25 | Herbs for Health | |
+| IAB7-26 | Holistic Healing | |
+| IAB7-27 | IBS/Crohn’s Disease | |
+| IAB7-28 | Incest/Abuse Support | |
+| IAB7-29 | Incontinence | |
+| IAB7-30 | Infertility | |
+| IAB7-31 | Men’s Health | |
+| IAB7-32 | Nutrition | |
+| IAB7-33 | Orthopedics | |
+| IAB7-34 | Panic/Anxiety Disorders | |
+| IAB7-35 | Pediatrics | |
+| IAB7-36 | Physical Therapy | |
+| IAB7-37 | Psychology/Psychiatry | |
+| IAB7-38 | Senior Health | |
+| IAB7-39 | Sexuality | |
+| IAB7-40 | Sleep Disorders | |
+| IAB7-41 | Smoking Cessation | |
+| IAB7-42 | Substance Abuse | |
+| IAB7-43 | Thyroid Disease | |
+| IAB7-44 | Weight Loss | |
+| IAB7-45 | Women's Health | |
+| IAB8 | Food & Drink | |
+| IAB8-1 | American Cuisine | |
+| IAB8-2 | Barbecues & Grilling | |
+| IAB8-3 | Cajun/Creole | |
+| IAB8-4 | Chinese Cuisine | |
+| IAB8-5 | Cocktails/Beer | |
+| IAB8-6 | Coffee/Tea | |
+| IAB8-7 | Cuisine-Specific | |
+| IAB8-8 | Desserts & Baking | |
+| IAB8-9 | Dining Out | |
+| IAB8-10 | Food Allergies | |
+| IAB8-11 | French Cuisine | |
+| IAB8-12 | Health/Low-Fat Cooking | |
+| IAB8-13 | Italian Cuisine | |
+| IAB8-14 | Japanese Cuisine | |
+| IAB8-15 | Mexican Cuisine | |
+| IAB8-16 | Vegan | |
+| IAB8-17 | Vegetarian | |
+| IAB8-18 | Wine | |
+| IAB9 | Hobbies & Interests | |
+| IAB9-1 | Art/Technology | |
+| IAB9-2 | Arts & Crafts | |
+| IAB9-3 | Beadwork | |
+| IAB9-4 | Bird-Watching | |
+| IAB9-5 | Board Games/Puzzles | |
+| IAB9-6 | Candle & Soap Making | |
+| IAB9-7 | Card Games | |
+| IAB9-8 | Chess | |
+| IAB9-9 | Cigars | |
+| IAB9-10 | Collecting | |
+| IAB9-11 | Comic Books | |
+| IAB9-12 | Drawing/Sketching | |
+| IAB9-13 | Freelance Writing | |
+| IAB9-14 | Genealogy | |
+| IAB9-15 | Getting Published | |
+| IAB9-16 | Guitar | |
+| IAB9-17 | Home Recording | |
+| IAB9-18 | Investors & Patents | |
+| IAB9-19 | Jewelry Making | |
+| IAB9-20 | Magic & Illusion | |
+| IAB9-21 | Needlework | |
+| IAB9-22 | Painting | |
+| IAB9-23 | Photography | |
+| IAB9-24 | Radio | |
+| IAB9-25 | Roleplaying Games | |
+| IAB9-26 | Sci-Fi & Fantasy | |
+| IAB9-27 | Scrapbooking | |
+| IAB9-28 | Screenwriting | |
+| IAB9-29 | Stamps & Coins | |
+| IAB9-30 | Video & Computer Games | |
+| IAB9-31 | Woodworking | |
+| IAB10 | Home & Garden | |
+| IAB10-1 | Appliances | |
+| IAB10-2 | Entertaining | |
+| IAB10-3 | Environmental Safety | |
+| IAB10-4 | Gardening | |
+| IAB10-5 | Home Repair | |
+| IAB10-6 | Home Theater | |
+| IAB10-7 | Interior Decorating | |
+| IAB10-8 | Landscaping | |
+| IAB10-9 | Remodeling & Construction | |
+| IAB11 | Law, Government, & Politics | |
+| IAB11-1 | Immigration | |
+| IAB11-2 | Legal Issues | |
+| IAB11-3 | U.S. Government Resources | |
+| IAB11-4 | Politics | |
+| IAB11-5 | Commentary | |
+| IAB12 | News | |
+| IAB12-1 | International News | |
+| IAB12-2 | National News | |
+| IAB12-3 | Local News | |
+| IAB13 | Personal Finance | |
+| IAB13-1 | Beginning Investing | |
+| IAB13-2 | Credit/Debt & Loans | |
+| IAB13-3 | Financial News | |
+| IAB13-4 | Financial Planning | |
+| IAB13-5 | Hedge Fund | |
+| IAB13-6 | Insurance | |
+| IAB13-7 | Investing | |
+| IAB13-8 | Mutual Funds | |
+| IAB13-9 | Options | |
+| IAB13-10 | Retirement Planning | |
+| IAB13-11 | Stocks | |
+| IAB13-12 | Tax Planning | |
+| IAB14 | Society | |
+| IAB14-1 | Dating | |
+| IAB14-2 | Divorce Support | |
+| IAB14-3 | Gay Life | |
+| IAB14-4 | Marriage | |
+| IAB14-5 | Senior Living | |
+| IAB14-6 | Teens | |
+| IAB14-7 | Weddings | |
+| IAB14-8 | Ethnic Specific | |
+| IAB15 | Science | |
+| IAB15-1 | Astrology | |
+| IAB15-2 | Biology | |
+| IAB15-3 | Chemistry | |
+| IAB15-4 | Geology | |
+| IAB15-5 | Paranormal Phenomena | |
+| IAB15-6 | Physics | |
+| IAB15-7 | Space/Astronomy | |
+| IAB15-8 | Geography | |
+| IAB15-9 | Botany | |
+| IAB15-10 | Weather | |
+| IAB16 | Pets | |
+| IAB16-1 | Aquariums | |
+| IAB16-2 | Birds | |
+| IAB16-3 | Cats | |
+| IAB16-4 | Dogs | |
+| IAB16-5 | Large Animals | |
+| IAB16-6 | Reptiles | |
+| IAB16-7 | Veterinary Medicine | |
+| IAB17 | Sports | |
+| IAB17-1 | Auto Racing | |
+| IAB17-2 | Baseball | |
+| IAB17-3 | Bicycling | |
+| IAB17-4 | Bodybuilding | |
+| IAB17-5 | Boxing | |
+| IAB17-6 | Canoeing/Kayaking | |
+| IAB17-7 | Cheerleading | |
+| IAB17-8 | Climbing | |
+| IAB17-9 | Cricket | |
+| IAB17-10 | Figure Skating | |
+| IAB17-11 | Fly Fishing | |
+| IAB17-12 | Football | |
+| IAB17-13 | Freshwater Fishing | |
+| IAB17-14 | Game & Fish | |
+| IAB17-15 | Golf | |
+| IAB17-16 | Horse Racing | |
+| IAB17-17 | Horses | |
+| IAB17-18 | Hunting/Shooting | |
+| IAB17-19 | Inline Skating | |
+| IAB17-20 | Martial Arts | |
+| IAB17-21 | Mountain Biking | |
+| IAB17-22 | NASCAR Racing | |
+| IAB17-23 | Olympics | |
+| IAB17-24 | Paintball | |
+| IAB17-25 | Power & Motorcycles | |
+| IAB17-26 | Pro Basketball | |
+| IAB17-27 | Pro Ice Hockey | |
+| IAB17-28 | Rodeo | |
+| IAB17-29 | Rugby | |
+| IAB17-30 | Running/Jogging | |
+| IAB17-31 | Sailing | |
+| IAB17-32 | Saltwater Fishing | |
+| IAB17-33 | Scuba Diving | |
+| IAB17-34 | Skateboarding | |
+| IAB17-35 | Skiing | |
+| IAB17-36 | Snowboarding | |
+| IAB17-37 | Surfing/Body-Boarding | |
+| IAB17-38 | Swimming | |
+| IAB17-39 | Table Tennis/Ping-Pong | |
+| IAB17-40 | Tennis | |
+| IAB17-41 | Volleyball | |
+| IAB17-42 | Walking | |
+| IAB17-43 | Waterski/Wakeboard | |
+| IAB17-44 | World Soccer | |
+| IAB18 | Style & Fashion | |
+| IAB18-1 | Beauty | |
+| IAB18-2 | Body Art | |
+| IAB18-3 | Fashion | |
+| IAB18-4 | Jewelry | |
+| IAB18-5 | Clothing | |
+| IAB18-6 | Accessories | |
+| IAB19 | Technology & Computing | |
+| IAB19-1 | 3-D Graphics | |
+| IAB19-2 | Animation | |
+| IAB19-3 | Antivirus Software | |
+| IAB19-4 | C/C++ | |
+| IAB19-5 | Cameras & Camcorders | |
+| IAB19-6 | Cell Phones | |
+| IAB19-7 | Computer Certification | |
+| IAB19-8 | Computer Networking | |
+| IAB19-9 | Computer Peripherals | |
+| IAB19-10 | Computer Reviews | |
+| IAB19-11 | Data Centers | |
+| IAB19-12 | Databases | |
+| IAB19-13 | Desktop Publishing | |
+| IAB19-14 | Desktop Video | |
+| IAB19-15 | Email | |
+| IAB19-16 | Graphics Software | |
+| IAB19-17 | Home Video/DVD | |
+| IAB19-18 | Internet Technology | |
+| IAB19-19 | Java | |
+| IAB19-20 | JavaScript | |
+| IAB19-21 | Mac Support | |
+| IAB19-22 | MP3/MIDI | |
+| IAB19-23 | Net Conferencing | |
+| IAB19-24 | Net for Beginners | |
+| IAB19-25 | Network Security | |
+| IAB19-26 | Palmtops/PDAs | |
+| IAB19-27 | PC Support | |
+| IAB19-28 | Portable | |
+| IAB19-29 | Entertainment | |
+| IAB19-30 | Shareware/Freeware | |
+| IAB19-31 | Unix | |
+| IAB19-32 | Visual Basic | |
+| IAB19-33 | Web Clip Art | |
+| IAB19-34 | Web Design/HTML | |
+| IAB19-35 | Web Search | |
+| IAB19-36 | Windows | |
+| IAB20 | Travel | |
+| IAB20-1 | Adventure Travel | |
+| IAB20-2 | Africa | |
+| IAB20-3 | Air Travel | |
+| IAB20-4 | Australia & New Zealand | |
+| IAB20-5 | Bed & Breakfasts | |
+| IAB20-6 | Budget Travel | |
+| IAB20-7 | Business Travel | |
+| IAB20-8 | By US Locale | |
+| IAB20-9 | Camping | |
+| IAB20-10 | Canada | |
+| IAB20-11 | Caribbean | |
+| IAB20-12 | Cruises | |
+| IAB20-13 | Eastern Europe | |
+| IAB20-14 | Europe | |
+| IAB20-15 | France | |
+| IAB20-16 | Greece | |
+| IAB20-17 | Honeymoons/Getaways | |
+| IAB20-18 | Hotels | |
+| IAB20-19 | Italy | |
+| IAB20-20 | Japan | |
+| IAB20-21 | Mexico & Central America | |
+| IAB20-22 | National Parks | |
+| IAB20-23 | South America | |
+| IAB20-24 | Spas | |
+| IAB20-25 | Theme Parks | |
+| IAB20-26 | Traveling with Kids | |
+| IAB20-27 | United Kingdom | |
+| IAB21 | Real Estate | |
+| IAB21-1 | Apartments | |
+| IAB21-2 | Architects | |
+| IAB21-3 | Buying/Selling Homes | |
+| IAB22 | Shopping | |
+| IAB22-1 | Contests & Freebies | |
+| IAB22-2 | Couponing | |
+| IAB22-3 | Comparison | |
+| IAB22-4 | Engines | |
+| IAB23 | Religion & Spirituality | |
+| IAB23-1 | Alternative Religions | |
+| IAB23-2 | Atheism/Agnosticism | |
+| IAB23-3 | Buddhism | |
+| IAB23-4 | Catholicism | |
+| IAB23-5 | Christianity | |
+| IAB23-6 | Hinduism | |
+| IAB23-7 | Islam | |
+| IAB23-8 | Judaism | |
+| IAB23-9 | Latter-Day Saints | |
+| IAB23-10 | Pagan/Wiccan | |
+| IAB24 | Uncategorized | |
+| IAB25 | Non-Standard Content | |
+| IAB25-1 | Unmoderated UGC | |
+| IAB25-2 | Extreme Graphic/Explicit Violence | |
+| IAB25-3 | Pornography | |
+| IAB25-4 | Profane Content | |
+| IAB25-5 | Hate Content | |
+| IAB25-6 | Under Construction | |
+| IAB25-7 | Incentivized | |
+| IAB26 | Illegal Content | |
+| IAB26-1 | Illegal Content | |
+| IAB26-2 | Warez | |
+| IAB26-3 | Spyware/Malware | |
+| IAB26-4 | Copyright Infringement | |
+
+
+## 5.2 Banner 广告类型
+
+下表展示了除被展示者站点设置限制的交易平台可以接受的广告类型。
+
 | 值 | 描述 |
 | --- | --- |
-| IAB1 | 艺术与娱乐 |
-| IAB1-1 | 名人粉丝/八卦 |
-| IAB1-2 | 美术 |
-| IAB1-3 | 幽默 |
-| IAB1-4 | 电影 |
-| IAB1-5 | 音乐 |
-| IAB1-6 | 电视 |
-| IAB2 | 汽车 |
-| IAB2-1 | 汽车配件 |
-| IAB2-2 | 汽车维修 |
-| IAB2-3 | 汽车买卖 |
-| IAB2-4 | 汽车文化 |
-| IAB2-5 | 二手车买卖 |
-| IAB2-6 | Convertible |
-| IAB2-7 | 双门跑车 |
-| IAB2-8 | 跨界车 |
-| IAB2-9 | 柴油机 |
-| IAB2-10 | 电动汽车 |
-| IAB2-11 | 有仓门式后背的汽车 |
-| IAB2-12 | 混合动力车 |
-| IAB2-13 | 豪华车 |
-| IAB2-14 | 小货车 |
-| IAB2-15 | 摩托车 |
-| IAB2-16 | 越野车 |
-| IAB2-17 | 车辆性能 |
-| IAB2-18 | 皮卡 |
-| IAB2-19 | 路边援助 |
-| IAB2-20 | 轿车 |
-| IAB2-21 | 卡车及配件 |
-| IAB2-22 | 老爷车 |
-| IAB2-23 | 马车 |
-| IAB3 | 商业 |
-| IAB3-1 | 广告 |
-| IAB3-2 | 农艺 |
-| IAB3-3 | 生物技术/生物医学 |
-| IAB3-4 | 商业软件 |
-| IAB3-5 | 建筑 |
-| IAB3-6 | 林业 |
-| IAB3-7 | 政府 |
-| IAB3-8 | 绿色解决方案 |
-| IAB3-9 | 人力资源 |
-| IAB3-10 | 物流 |
-| IAB3-11 | 市场营销 |
-| IAB3-12 | 金属 |
-| IAB4 | 职业生涯 |
-| IAB4-1 | 职业规划 |
-| IAB4-2 | 大学 |
-| IAB4-3 | 助学金 |
-| IAB4-4 | 招聘会 |
-| IAB4-5 | 找工作 |
-| IAB4-6 | 简历书写与建议 |
-| IAB4-7 | 护理 |
-| IAB4-8 | 奖学金 |
-| IAB4-9 | 远程办公 |
-| IAB4-10 | 美国军方 |
-| IAB4-11 | 职业建议 |
-| IAB5 | 教育 |
-| IAB5-1 | 7-12岁教育 |
-| IAB5-2 | 成人教育 |
-| IAB5-3 | 艺术历史 |
-| IAB5-4 | 大学管理 |
-| IAB5-5 | 大学生活 |
-| IAB5-6 | 远程教育 |
-| IAB5-7 | 英语作为第二语言 |
-| IAB5-8 | 语言学习 |
-| IAB5-9 | 研究生院 |
-| IAB5-10 | 在家教育 |
-| IAB5-11 | 作业/学习 |
-| IAB5-12 | K-6年级教育工作者 |
-| IAB5-13 | 私立学校 |
-| IAB5-14 | 特殊教育 |
-| IAB5-15 | 学习商业 |
-| IAB6 | 家庭和父母 |
-| IAB6-1 | 收养 |
-| IAB6-2 | 婴幼儿 |
-| IAB6-3 | 托儿所 |
-| IAB6-4 | 家庭网络 |
-| IAB6-5 | K-6年级小孩的教育 |
-| IAB6-6 | 青少年教育 |
-| IAB6-7 | 怀孕 |
-| IAB6-8 | 特殊需要的孩子 |
-| IAB6-9 | 老年人照顾 |
-| IAB7 | 健康与健身 |
-| IAB7-1 | 锻炼 |
-| IAB7-2 | 注意力缺陷障碍 |
-| IAB7-3 | 艾滋病 |
-| IAB7-4 | 过敏症 |
-| IAB7-5 | 替代医学 |
-| IAB7-6 | 关节炎 |
-| IAB7-7 | 哮喘 |
-| IAB7-8 | 自闭症/发育迟缓者 |
-| IAB7-9 | 抑郁狂躁型忧郁症 | 
-| IAB7-10 | 脑瘤 |
-| IAB7-11 | 癌症 |
-| IAB7-12 | 胆固醇 |
-| IAB7-13 | 慢性疲劳综合症 | 
-| IAB7-14 | 慢性疼痛 |
-| IAB7-15 | 感冒和流感 |
-| IAB7-16 | 耳聋 |
-| IAB7-17 | 牙科保健 |
-| IAB7-18 | 抑郁症 |
-| IAB7-19 | 皮肤病学 |
-| IAB7-20 | 糖尿病 |
-| IAB7-21 | 癫痫 | 
-| IAB7-22 | 胃食管反流/胃酸倒流 |
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
-| IAB7-
+| 1 | XHTML 文本广告（通常用于移动手机）|
+| 2 | XHTML Banner 广告 （通常用于移动手机）|
+| 3 | javascript 广告， 必须是合法的XHTML(即用script标签包裹) |
+| 4 | iframe广告 |
+
+## 5.3 Creative 属性
+
+下表展示了广告物料属性的标准列表， 用于描述一个被提供的广告或者作为限制提供。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | 音频广告（自动播放）|
+| 2 | 音频广告 （用户触发）|
+| 3 | 可伸展 （自动）|
+| 4 | 可伸展 （用户点击触发）|
+| 5 | 可伸展 （用户翻转触发）|
+| 6 | Banner内视频广告 （自动播放）|
+| 7 | Banner内视频广告 （用户触发）|
+| 8 | 弹出广告 （例如， 在退出之前，之后或者当退出的时候）|
+| 9 | Provocative or Suggestive Imagery |
+| 10 | Shaky, Flashing, Flickering, Extreme Animation, Smileys |
+| 11 | 调查问卷 |
+| 12 | 文本广告 |
+| 13 | 用户互动 （比如，嵌入式游戏）|
+| 14 | 窗口对话框或弹出提示框 |
+| 15 | 具有音频开关按钮 |
+| 16 | 广告可以被跳过（例如，片头广告视频的跳过按钮）|
+
+## 5.4 广告位置
+
+下表描述了广告相对于可见范围的位置。表中的**值**继承自IAB QAG. 实现者应当保持与QAG中值同步。
+
+| 值 | 描述 |
+| --- | --- |
+| 0 | 未知 |
+| 1 | Above the Fold |
+| 2 | DEPRECATED - May or may not be initially visible depending on screen size/resolution |
+| 3 | Below the Fold |
+| 4 | Header |
+| 5 | Footer |
+| 6 | Sidebar |
+| 7 | Full Screen |
 
 
+## 5.5 伸展方向
 
-## 5.2 Banner Ad Types
-## 5.3 Creative Attributes
-## 5.4 Ad Position
-## 5.5 Expandable Direction
-## 5.6 API Frameworks
-## 5.7 Video Linearity
-## 5.8 Video Bid Response Protocols
-## 5.9 Video Playback Methods
-## 5.10 Video Start Delay
-## 5.11 Video Quality
-## 5.12 VAST Companion Types
-## 5.13 Content Delivery Methods
-## 5.14 Content Context
-## 5.15 QAG Media Rating
-## 5.16 Location Type
-## 5.17 Device Type
+下表罗列了一个可伸展广告可以伸展的方向，考虑了广告单元在页面汇总的位置以及被内容的限制。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | Left |
+| 2 | Right |
+| 3 | Up |
+| 4 | Down |
+| 5 | Full Screen |
+
+## 5.6 API 框架
+下表罗列了展示者支持的API框架。 注意MRAID-1是MRAID-2的子集。在OpenRTB2.1及之前版本，“3”对应的是"MRAID", 然而并不是所有MARID兼容的API可以理解MRAID-2的特性，所以最安全的方式是将3理解为MRAID-1.在OpenRTB2.2中， 该值已经被显式标明了， MRAID-2也使用值5被加入。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | VPAID 1.0 |
+| 2 | VPAID 2.0 |
+| 3 | MARID-1 |
+| 4 | ORMMA |
+| 5 | MRAID-2 |
+
+## 5.7 视频 Linearity
+下表描述了视频 linearity的选项， “in-stream" 或者 ”linear" 表示在视频开始，中间或者结束插入的视频广告， 用户被强制观看广告内容。 “overlay"或者”non-linear"指那种在视频内容之上的广告。
+
+这个实行是可选的， 竞拍者可以根据其是否在竞价请求中出现按照如下规则解析：
+- 如果该值没有被设置， 任何广告（不管是否是linear)都可以在竞价响应中出现。
+- 如果被设置了，仅指定类型的关高可以在竞价响应中出现。
+
+读者需要注意：该表中的值继承自IAB QAG.实现者应当与最新的QAG值保持一致。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | Linear/in-stream |
+| 2 | Non-Linear/Overlay |
+
+## 5.8 视频竞价响应协议
+
+下表罗列了交易平台需要支持的视频广告竞价响应协议。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | VAST 1.0 |
+| 2 | VAST 2.0 |
+| 3 | VAST 3.0 |
+| 4 | VAST 1.0 Wrapper |
+| 5 | VAST 2.0 Wrapper |
+| 6 | VAST 3.0 Wrapper |
+
+## 5.9 视频播放方式
+
+下表罗列了不同种类的视频播放方式
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | 自动播放（有声）|
+| 2 | 自动播放 （静音）|
+| 3 | 点击播放 |
+| 4 | 鼠标经过播放 |
+
+## 5.10 视频播放延时
+
+下表罗列了视频播放延时的各种选项。如果播放延时值大于0， 表示视频中广告且该值表示广告开始播放的延时。
+
+| 值 | 描述 |
+| --- | --- |
+| >0 | 视频中广告，值表示广告播放延时，以秒为单位 |
+| 0 | 视频前广告 |
+| -1 | 普通视频中广告 |
+| -2 | 普通视频后广告 |
+
+## 5.11 视频质量
+
+下表罗列了视频质量选项。这些值在IAB的[long-form-video-final.pdf](http://www.iab.net/media/file/long-form-video-final.pdf)中有定义。
+
+| 值 | 描述 |
+| --- | --- |
+| 0 | 未知 |
+| 1 | Professionally Produced 专业制作 |
+| 2 | Prosumer 专业级 |
+| 3 | User Generated (UGC) 用户生成 |
+
+## 5.12 VAST 伴随类型
+下表罗列了允许的视频伴随广告的类型。表格继承自IAB VAST2.0+, 更多信息参考[www.iab.net/vast](http://www.iab.net/vast).
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | 静态资源 |
+| 2 | HTML资源 |
+| 3 | iframe资源 |
+
+## 5.13 内容传输方式
+下表罗列了视频内容传输的不同方式。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | Streaming |
+| 2 | Progressive |
+
+## 5.14 内容上下文
+
+下表罗列了广告可能出现的内容类型选项。
+该表继承自QAG,实现者应当与QAG的相关描述保持一致。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | 视频（一个别用户观看的视频文件或者视频流， 包括网络电视广播）|
+| 2 | 游戏 (用户正在玩的游戏）|
+| 3 | 音乐 （一个用户正在听的音频文件或者音频流， 包括网络无线广播）|
+| 4 | 应用 （用户正在使用的交互式软件） |
+| 5 | 文本 （用户正在浏览或者阅读的文本文档， 包括web页面，电子书或者新闻文章 |
+| 6 | 其他 （其他用户正在消费的位置类型的内容） |
+| 7 | 未知 |
+
+## 5.15 QAG 媒体级别
+
+下表罗列了基于QAG的媒体内容级别。详细信息参考[http://www.iab.net/ne_guidelines](http://www.iab.net/ne_guidelines).
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | 所有受众|
+| 2 | 大于12岁 |
+| 3 | 成年人 |
+
+## 5.16 位置类型
+
+下表罗列了位置信息来源相关的选项。
+
+| 值 | 描述 |
+| --- | --- |
+| 1 | GPS/定位服务 |
+| 2 | IP地址 |
+| 3 | 用户提供 （例如注册信息） |
+
+## 5.17 设备类型
+
+下表罗列了广告展示所在的视频类型。
+
+OpenRTB规范版本2.2区分了手机和平板， 建议任何竞价者添加对2.2的支持， 可以将1等价4&5解析。
+该表继承自QAG,实现者应当与QAG的相关描述保持一致。
+
+| 值 | 描述 | 备注 |
+| --- | --- | --- |
+| 1 | 手机/平板 | Version 2.0 |
+| 2 | 个人电脑 | Version 2.0 |
+| 3 | 联网电视 | Version 2.0 |
+| 4 | 手机 | New for Version 2.2 |
+| 5 | 平板 | New for Version 2.2 |
+| 6 | 联网设备 | New for Version 2.2 |
+| 7 | 机顶盒 | New for Version 2.2 |
+
 ## 5.18 Connection Type
+
+下表罗列了设备网络连接方式的各种选项。
+
+| 值 | 描述 |
+| --- | --- |
+| 0 | 未知 |
+| 1 | Ethernet以太网 |
+| 2 | WIFI |
+| 3 | 移动网络，未知类型 |
+| 4 | 移动网络-2G |
+| 5 | 移动网络-3G |
+| 6 | 移动网络-4G |
+
 ## 5.19 No-Bid Reason Codes
 
-# 6. Bid Request/Response 样例
-## 6.1 Github Repository
-## 6.2 Validator
-## 6.3 Bid Requests
-### 6.3.1 Sample Banner
-### 6.3.2 Expandable Creative
-### 6.3.3 Mobile
-### 6.3.4 Video
-### 6.3.5 PMP with Direct Deal
-### 6.3.6 Native Ad
+下表罗列了竞拍者不能为交易平台的展示请求提供广告的原因类型。
+| 值 | 描述 | 中文释义 |
+| --- | --- | --- | 
+| 0 | Unknown Error | 未知错误 |
+| 1 | Technical Error | 技术错误 |
+| 2 | Invalid Request | 非法请求 |
+| 3 | Known Web Spider | 已知的网络爬虫 |
+| 4 | Suspected Non-Human Traffic | 怀疑非人为请求 | 
+| 5 | Cloud, Data Center, or Proxy IP | 来自云，数据中心或者代理的IP |
+| 6 | Unsupported Device | 不支持的设备类型 | 
+| 7 | Blocked Publisher or Site | 来自受限展示者或站点 | 
+| 8 | Unmatched User | 用户不匹配 |
 
-## 6.4 Bid Responses
-### 6.4.1 Ad Served on Win Notice
+# 6. 竞价请求/响应 示例
+## 6.1 Github 仓库地址
+
+官方的OpenRTB Github仓库地址现在包括一系列已经验证的请求示例，实现者可以在实现协议的时候作为参考。
+[https://github.com/openrtb/examples](https://github.com/openrtb/examples)
+
+## 6.2 验证器
+
+OpenRTB提供了一个用于验证请求及响应json是否是有效openrtb请求或响应json的库.源文档给出的链接已经不能使用（404），可能的Github地址如下：
+[https://github.com/openrtb/openrtb2x/tree/2.0/openrtb-validator](https://github.com/openrtb/openrtb2x/tree/2.0/openrtb-validator)
+
+## 6.3 竞价请求 
+### 6.3.1 Banner请求示例
+
+以下是一个Banner广告的竞价请求示例，示例中也包含了一些可选参数。
+
+```
+{
+    "id": "80ce30c53c16e6ede735f123ef6e32361bfc7b22",
+    "at": 1,
+    "cur": [
+        "USD"
+    ],
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.03,
+            "banner": {
+                "h": 250,
+                "w": 300,
+                "pos": 0
+            }
+        }
+    ],
+    "site": {
+        "id": "102855",
+        "cat": [
+            "IAB3-1"
+        ],
+        "domain": "www.foobar.com",
+        "page": "http://www.foobar.com/1234.html ",
+        "publisher": {
+            "id": "8953",
+            "name": "foobar.com",
+            "cat": [
+                "IAB3-1"
+            ],
+            "domain": "foobar.com"
+        }
+    },
+    "device": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13
+(KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
+        "ip": "123.145.167.10"
+    },
+    "user": {
+        "id": "55816b39711f9b5acf3b90e313ed29e51665623f"
+    }
+}
+
+```
+
+### 6.3.2 可伸展广告物料
+
+本示例是第一个示例的改进版，增加了一些用于描述可伸展广告物料支持的参数， 并使用“Data Provider 1"传输用户相关的信息。
+
+```
+{
+    "id": "123456789316e6ede735f123ef6e32361bfc7b22",
+    "at": 2,
+    "cur": [
+        "USD"
+    ],
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.03,
+            "iframebuster": [
+                "vendor1.com",
+                "vendor2.com"
+            ],
+            "banner": {
+                "h": 250,
+                "w": 300,
+                "pos": 0,
+                "battr": [
+                    13
+                ],
+                "expdir": [
+                    2,
+                    4
+                ]
+            }
+        }
+    ],
+    "site": {
+        "id": "102855",
+        "cat": [
+            "IAB3-1"
+        ],
+        "domain": "www.foobar.com",
+        "page": "http://www.foobar.com/1234.html",
+        "publisher": {
+            "id": "8953",
+            "name": "foobar.com",
+            "cat": [
+                "IAB3-1"
+            ],
+            "domain": "foobar.com"
+        }
+    },
+    "device": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13
+(KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
+        "ip": "123.145.167.10"
+    },
+    "user": {
+        "id": "55816b39711f9b5acf3b90e313ed29e51665623f",
+        "buyeruid": "545678765467876567898765678987654",
+        "data": [
+            {
+                "id": "6",
+                "name": "Data Provider 1",
+                "segment": [
+                    {
+                        "id": "12341318394918",
+                        "name": "auto intenders"
+                    },
+                    {
+                        "id": "1234131839491234",
+                        "name": "auto enthusiasts"
+                    },
+                    {
+                        "id": "23423424",
+                        "name": "data-provider1-age",
+                        "value": "30-40"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+### 6.3.3 手机信息
+
+本示例使用Device对象来描述移动手机设备， 以及一个App对象来描述该请求所来自的移动端应用。
+
+```
+{
+    "id": "IxexyLDIIk",
+    "at": 2,
+    "bcat": [
+        "IAB25",
+        "IAB7-39",
+        "IAB8-18",
+        "IAB8-5",
+        "IAB9-9"
+    ],
+    "badv": [
+        "apple.com",
+        "go-text.me",
+        "heywire.com"
+    ],
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.5,
+            "instl": 0,
+            "tagid": "agltb3B1Yi1pbmNyDQsSBFNpdGUY7fD0FAw",
+            "banner": {
+                "w": 728,
+                "h": 90,
+                "pos": 1,
+                "btype": [
+                    4
+                ],
+                "battr": [
+                    14
+                ],
+                "api": [
+                    3
+                ]
+            }
+        }
+    ],
+    "app": {
+        "id": "agltb3B1Yi1pbmNyDAsSA0FwcBiJkfIUDA",
+        "name": "Yahoo Weather",
+        "cat": [
+            "IAB15",
+            "IAB15-10"
+        ],
+        "ver": "1.0.2",
+        "bundle": "com.yahoo.wxapp",
+        "storeurl": "https://itunes.apple.com/id628677149",
+        "publisher": {
+            "id": "agltb3B1Yi1pbmNyDAsSA0FwcBiJkfTUCV",
+            "name": "yahoo",
+            "domain": "www.yahoo.com"
+        }
+    },
+    "device": {
+        "dnt": 0,
+        "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X)
+AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3",
+        "ip": "123.145.167.189",
+        "ifa": "AA000DFE74168477C70D291f574D344790E0BB11",
+        "carrier": "VERIZON",
+        "language": "en",
+        "make": "Apple",
+        "model": "iPhone",
+        "os": "iOS",
+        "osv": "6.1",
+        "js": 1,
+        "connectiontype": 3,
+        "devicetype": 1,
+        "geo": {
+            "lat": 35.012345,
+            "lon": -115.12345,
+            "country": "USA",
+            "metro": "803",
+            "region": "CA",
+            "city": "Los Angeles",
+            "zip": "90049"
+        }
+    },
+    "user": {
+        "id": "ffffffd5135596709273b3a1a07e466ea2bf4fff",
+        "yob": 1984,
+        "gender": "M"
+    }
+}
+```
+
+### 6.3.4 视频广告示例
+
+以下示例展示了一个包含两个附加广告（其中一个可伸展）的视频广告展示， 此外， 视频内容本身在"content"对象中描述，对于本示例一些特殊需要注意的点如下：
+
+- **protocol:** 仅VAST2.0和VAST3.0允许。
+- **sequence:** 没有被指定，所以默认为1.
+- **battr:** 对于视频以及它的附加广告， 用户交互以及提示型广告（分别是13和14）被显式的限制。
+- **pos:** 展示了本次展示是“在内容之上”的广告。
+- **api:** 标识VPAID 1.0容器被显式支持。因此，VPAID支持的 mime-type仅仅是"application/x-shockwave-flash"以及“application/javascript".需要注意有一个隐式的限制是对于不同的mime-type有哪些类型的协议是允许的。Javascript支持在VPAID2.0之前是没有指定的， 而VPAID1.0和2.0都支持Flash.
+- **companiontype:** 标识只有静态和HTML资源被允许。
+
+```
+{
+    "id": "1234567893",
+    "at": 2,
+    "tmax": 120,
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.03,
+            "video": {
+                "w": 640,
+                "h": 480,
+                "pos": 1,
+                "startdelay": 0,
+                "minduration": 5,
+                "maxduration": 30,
+                "maxextended": 30,
+                "minbitrate": 300,
+                "maxbitrate": 1500,
+                "api": [
+                    1,
+                    2
+                ],
+                "protocols": [
+                    2,
+                    3
+                ],
+                "mimes": [
+                    "video/x-flv",
+                    "video/mp4",
+                    "application/x-shockwave-flash",
+                    "application/javascript"
+                ],
+                "linearity": 1,
+                "boxingallowed": 1,
+                "playbackmethod": [
+                    1,
+                    3
+                ],
+                "delivery": [
+                    2
+                ],
+                "battr": [
+                    13,
+                    14
+                ],
+                "companionad": [
+                    {
+                        "id": "1234567893-1",
+                        "w": 300,
+                        "h": 250,
+                        "pos": 1,
+                        "battr": [
+                            13,
+                            14
+                        ],
+                        "expdir": [
+                            2,
+                            4
+                        ]
+                    },
+                    {
+                        "id": "1234567893-2",
+                        "w": 728,
+                        "h": 90,
+                        "pos": 1,
+                        "battr": [
+                            13,
+                            14
+                        ]
+                    }
+                ],
+                "companiontype": [
+                    1,
+                    2
+                ]
+            }
+        }
+    ],
+    "site": {
+        "id": "1345135123",
+        "name": "Site ABCD",
+        "domain": "siteabcd.com",
+        "cat": [
+            "IAB2-1",
+            "IAB2-2"
+        ],
+        "page": "http://siteabcd.com/page.htm",
+        "ref": "http://referringsite.com/referringpage.htm",
+        "privacypolicy": 1,
+        "publisher": {
+            "id": "pub12345",
+            "name": "Publisher A"
+        },
+        "content": {
+            "id": "1234567",
+            "series": "All About Cars",
+            "season": "2",
+            "episode": 23,
+            "title": "Car Show",
+            "cat": [
+                "IAB2-2"
+            ],
+            "keywords": "keyword-a,keyword-b,keyword-c"
+        }
+    },
+    "device": {
+        "ip": "64.124.253.1",
+        "ua": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.16)
+Gecko/20110319 Firefox/3.6.16",
+        "os": "OS X",
+        "flashver": "10.1",
+        "js": 1
+    },
+    "user": {
+        "id": "456789876567897654678987656789",
+        "buyeruid": "545678765467876567898765678987654",
+        "data": [
+            {
+                "id": "6",
+                "name": "Data Provider 1",
+                "segment": [
+                    {
+                        "id": "12341318394918",
+                        "name": "auto intenders"
+                    },
+                    {
+                        "id": "1234131839491234",
+                        "name": "auto enthusiasts"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+### 6.3.5 带有直接交易规则的私有广告市场
+
+以下是一个带有直接交易规则的Banner广告竞价请求示例，其中包含了一些可选参数。
+
+```
+{
+    "id": "80ce30c53c16e6ede735f123ef6e32361bfc7b22",
+    "at": 1,
+    "cur": [
+        "USD"
+    ],
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.03,
+            "banner": {
+                "h": 250,
+                "w": 300,
+                "pos": 0
+            },
+            "pmp": {
+                "private_auction": 1,
+                "deals": [
+                    {
+                        "id": "AB-Agency1-0001",
+                        "at": 1,
+                        "bidfloor": 2.5,
+                        "wseat": [
+                            "Agency1"
+                        ]
+                    },
+                    {
+                        "id": "XY-Agency2-0001",
+                        "at": 2,
+                        "bidfloor": 2,
+                        "wseat": [
+                            "Agency2"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "site": {
+        "id": "102855",
+        "domain": "www.foobar.com",
+        "cat": [
+            "IAB3-1"
+        ],
+        "page": "http://www.foobar.com/1234.html",
+        "publisher": {
+            "id": "8953",
+            "name": "foobar.com",
+            "cat": [
+                "IAB3-1"
+            ],
+            "domain": "foobar.com"
+        }
+    },
+    "device": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13
+(KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
+        "ip": "123.145.167.10"
+    },
+    "user": {
+        "id": "55816b39711f9b5acf3b90e313ed29e51665623f"
+    }
+}
+```
+
+### 6.3.6 原生广告
+
+以下是一个Native广告的竞价请求示例， 与6.3.1节描述的请求示例有点像，需要注意的是`native`对象中的`request`属性包含的是一个已编码的native广告请求字符串。字符串的具体格式需要符合Native广告请求规范，`ver`属性指明了Naitve广告符合的规范版本是1.0.
+
+```
+{
+    "id": "80ce30c53c16e6ede735f123ef6e32361bfc7b22",
+    "at": 1,
+    "cur": [
+        "USD"
+    ],
+    "imp": [
+        {
+            "id": "1",
+            "bidfloor": 0.03,
+            "native": {
+                "request": "...Native Spec request as an encoded string...",
+                "ver": "1.0",
+                "api": [
+                    3
+                ],
+                "battr": [
+                    13,
+                    14
+                ]
+            }
+        }
+    ],
+    "site": {
+        "id": "102855",
+        "cat": [
+            "IAB3-1"
+        ],
+        "domain": "www.foobar.com",
+        "page": "http://www.foobar.com/1234.html ",
+        "publisher": {
+            "id": "8953",
+            "name": "foobar.com",
+            "cat": [
+                "IAB3-1"
+            ],
+            "domain": "foobar.com"
+        }
+    },
+    "device": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13
+(KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
+        "ip": "123.145.167.10"
+    },
+    "user": {
+        "id": "55816b39711f9b5acf3b90e313ed29e51665623f"
+    }
+}
+```
+
+## 6.4 竞价响应
+### 6.4.1 在胜出通知响应中返回的广告内容。
+
+以下展示了在胜出通知响应中返回的竞价响应， 对于该次展示的竞拍价格是$9.43 CPM.
+
+```
+{
+    "id": "1234567890",
+    "bidid": "abc1123",
+    "cur": "USD",
+    "seatbid": [
+        {
+            "seat": "512",
+            "bid": [
+                {
+                    "id": "1",
+                    "impid": "102",
+                    "price": 9.43,
+                    "nurl": "http://adserver.com/winnotice?impid=102",
+                    "iurl": "http://adserver.com/pathtosampleimage",
+                    "adomain": [
+                        "advertiserdomain.com"
+                    ],
+                    "cid": "campaign111",
+                    "crid": "creative112",
+                    "attr": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        12
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### 6.4.2 VAST XML Document Returned Inline
+
+以下是返回VAST文档格式的广告竞价响应示例。示例中需要注意的点如下：
+
+- 展示的竞拍价格是￥3.00CPM
+- Note that since there both a win notice URL and an inline VAST document in the adm attribute, which constitutes the ad markup. The win notice is still called, but if it were to return markup it would be ignored in favor of the contents of the adm attribute
+
+```
+{
+    "id": "123",
+    "seatbid": [
+        {
+            "bid": [
+                {
+                    "id": "12345",
+                    "impid": "2",
+                    "price": 3,
+                    "nurl": "http://example.com/winnoticeurl",
+                    "adm": "%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-
+8%22%3F%3E%0A%3CVAST%20version%3D%222.0%22%3E%0A%20%20%20%20%3CAd%20id%3D%2212345%22
+%3E%0A%20%20%20%20%20%20%20%20%3CInLine%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C
+AdSystem%20version%3D%221.0%22%3ESpotXchange%3C%2FAdSystem%3E%0A%20%20%20%20%20%20%2
+0%20%20%20%20%20%20%20%20%20%3CAdTitle%3E%3C!%5BCDATA%5BSample%20VAST%5D%5D%3E%3C%2F
+AdTitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CImpression%3Ehttp%3A
+%2F%2Fsample.com%3C%2FImpression%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%
+20%3CDescription%3E%3C!%5BCDATA%5BA%20sample%20VAST%20feed%5D%5D%3E%3C%2FDescription
+%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CCreatives%3E%0A%20%20%20%20
+%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CCreative%20sequence%3D%221%22%20i
+d%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%
+20%20%3CLinear%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%
+20%20%20%20%20%20%20%3CDuration%3E00%3A00%3A30%3C%2FDuration%3E%0A%20%20%20%20%20%20
+%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CTrackingEvents%
+3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%
+20%20%3C%2FTrackingEvents%3E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2
+0%20%20%20%20%20%20%20%20%20%20%20%20%20%3CVideoClicks%3E%0A%20%20%20%20%20%20%20%20
+%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CClickThro
+ugh%3E%3C!%5BCDATA%5Bhttp%3A%2F%2Fsample.com%2Fopenrtbtest%5D%5D%3E%3C%2FClickThroug
+h%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2
+0%20%20%3C%2FVideoClicks%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20
+%20%20%20%20%20%20%20%20%20%20%3CMediaFiles%3E%0A%20%20%20%20%20%20%20%20%20%20%20%2
+0%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CMediaFile%20delivery
+%3D%22progressive%22%20bitrate%3D%22256%22%20width%3D%22640%22%20height%3D%22480%22%
+20type%3D%22video%2Fmp4%22%3E%3C!%5BCDATA%5Bhttp%3A%2F%2Fsample.com%2Fvideo.mp4%5D%5
+D%3E%3C%2FMediaFile%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2
+0%20%20%20%20%20%20%20%20%3C%2FMediaFiles%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%
+20%20%20%20%20%20%20%20%20%20%20%20%3C%2FLinear%3E%0A%20%20%20%20%20%20%20%20%20%20%
+20%20%20%20%20%20%20%20%20%20%3C%2FCreative%3E%0A%20%20%20%20%20%20%20%20%20%20%20%2
+0%20%20%20%20%3C%2FCreatives%3E%0A%20%20%20%20%20%20%20%20%3C%2FInLine%3E%0A%20%20%2
+0%20%3C%2FAd%3E%0A%3C%2FVAST%3E"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### 6.4.3 Direct Deal Ad Served on Win Notice
-### 6.4.4 Native Markup Returned Inline
+
+以下示例展示了一个在胜出通知响应中提供广告内容的竞价响应。 此次展示的竞标价格是$5.00 CPM, 且依赖一个直接交易规则。
+
+```
+{
+    "id": "1234567890",
+    "bidid": "abc1123",
+    "cur": "USD",
+    "seatbid": [
+        {
+            "seat": "512",
+            "bid": [
+                {
+                    "id": "1",
+                    "impid": "102",
+                    "price": 5,
+                    "dealid": "ABC-1234-6789",
+                    "nurl": "http: //adserver.com/winnotice?impid=102",
+                    "adomain": [
+                        "advertiserdomain.com"
+                    ],
+                    "iurl": "http: //adserver.com/pathtosampleimage",
+                    "cid": "campaign111",
+                    "crid": "creative112",
+                    "adid": "314",
+                    "attr": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+### 6.4.4 直接在竞价请求中返回原生广告
+
+以下是一个返回Native广告的竞价响应，`adm`属性包含了一个Native广告竞价响应的字符串，该字符串的内容需符合Native广告OpenRTB规范。 另外， 如果广告内容是在胜出通知的响应中提供的话， 就可以不提供`adm`属性。
 
 # 7. 实现注意事项
+
+以下部分会简要介绍某些特定的对象和域是如何被解析以及实现的。
+
 ## 7.1 COPPA Regulation Flag
+
+美国联邦交易委员会已经修改了儿童在线隐私保护法案的规则， 从2013年7月1日起生效。该提议对网站和相关的服务进行了明确的分类，如下：
+- 直接面向低于13岁的用户。
+- 从低于13岁的群体的用户收集信息。
+
+联邦委员会同时撰写了一个便于理解的FAQ, 你可以在这里找到：
+[http://business.ftc.gov/documents/Complying-with-COPPA-Frequently-Asked-Questions](http://business.ftc.gov/documents/Complying-with-COPPA-Frequently-Asked-Questions)
+
+联邦委员会的CTO, Steve Bellovin, 在2013年1月发表了一片博文， 主张为该协议建立一套统一的标准， 你可以在这里找到(翻译时本文已经被删除)：
+[https://techatftc.wordpress.com/2013/01/02/coppa-and-signaling/](https://techatftc.wordpress.com/2013/01/02/coppa-and-signaling/)
+
+**影响**
+
+FAQ中也特别指出在OpenRTB中指明是“个人信息”的相关领域信息也不能被收集。
+- 足够确认街道名称或者城市名称的地理位置信息。
+- 可以跨站点或者在线服务能够长时间稳定识别用户的信息。
+
+**实现者建议**
+
+OpenRTB的交易平台和竞价者应当：
+- 为站点提供设施，让他们能标识自己是“直接面向儿童的”。
+- 实现规则对象扩展。
+- 在广告活动中提供设施来标明其是否是针对儿童。
+- 降低地理位置信息的精确度，仅仅用于支持日志或者数据传输。
+- 根据使用状况合理控制用户标识的提取和同步。
+
 ## 7.2 PMP & Direct Deals
 ## 7.3 No-Bid Signaling
 
