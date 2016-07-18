@@ -10,8 +10,8 @@ union-doc-translate 工程主要是UC Union整理的广告相关知识文档以�
 
 ## 重要站点及链接：
 
-- [IAB:](http://www.iab.com/).
-- [OpenRTB:](https://openrtb.github.io/OpenRTB/).
+- [IAB:http://www.iab.com/](http://www.iab.com/).
+- [OpenRTB:https://openrtb.github.io/OpenRTB/](https://openrtb.github.io/OpenRTB/).
 
 ## 实用工具
 - [OpenRTB请求响应格式验证：](https://github.com/openrtb/openrtb2x/tree/2.0/openrtb-validator)
