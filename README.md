@@ -1,4 +1,4 @@
-union-doc-translate 工程主要是UC Union整理的广告相关知识文档以及业界相关规范等文档翻译。
+OpenRTB 工程主要是整理的广告相关知识文档以及业界相关规范等文档翻译。
 
 - 广告基础知识
     + [术语](https://github.com/leeowenowen/OpenRTB/blob/master/Terms.md)
